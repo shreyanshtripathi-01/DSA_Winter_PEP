@@ -1,0 +1,1 @@
+//make a leap year prgm using ternary op
