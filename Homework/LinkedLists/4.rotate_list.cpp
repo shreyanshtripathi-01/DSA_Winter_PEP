@@ -5,14 +5,12 @@ public:
         int len=1;
         ListNode* tail=head;
         while(tail->next){tail=tail->next;len++;}
-        k%=len;
+        k=k%len;
         if(k==0) return head;
         tail->next=head;
-        int steps=len-k;
-        ListNode* newTail=head;
-        for(int i=1;i<steps;i++) newTail=newTail->next;
-        ListNode* newHead=newTail->next;
-        newTail->next=NULL;
-        return newHead;
+        for(int i=0;i<len-k;i++) tail=tail->next;
+        head=tail->next;
+        tail->next=nullptr;
+        return head;
     }
 };
