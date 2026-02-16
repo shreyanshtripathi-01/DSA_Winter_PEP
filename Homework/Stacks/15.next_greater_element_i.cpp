@@ -1,0 +1,14 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        stack<int> st;
+        unordered_map<int,int> nge;
+        for(int x:nums2){
+            while(!st.empty()&&st.top()<x){nge[st.top()]=x;st.pop();}
+            st.push(x);
+        }
+        vector<int> res;
+        for(int x:nums1) res.push_back(nge.count(x)?nge[x]:-1);
+        return res;
+    }
+};
